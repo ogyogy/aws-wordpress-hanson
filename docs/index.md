@@ -86,27 +86,39 @@ title: aws-wordpress-hanson
 # Apache HTTP Serverのインストール
 1. 以下のコマンドを入力してApacheをインストール
 
-```$ sudo yum -y install httpd```
+```
+$ sudo yum -y install httpd
+```
 
 2. 以下のコマンドを入力してApacheを起動
 
-```$ sudo service httpd start```
+```
+$ sudo service httpd start
+```
 
 3. 以下のコマンドを入力してサーバー起動時にApacheも自動的に再起動するように設定
 
-```$ sudo chkconfig httpd on```
+```
+$ sudo chkconfig httpd on
+```
 
 4. 以下のコマンドを入力する
 
-```ps -ax | grep httpd```
+```
+ps -ax | grep httpd
+```
 
 以下の行が表示されていればサーバー上でApacheが動作している
 
-```12134 ? Ss 0:00 /user/sbin/httpd```
+```
+12134 ? Ss 0:00 /user/sbin/httpd
+```
 
 6. 以下のコマンドでネットワークの待ち受け状態を確認
 
-```sudo lsof -i -n -P```
+```
+sudo lsof -i -n -P
+```
 
 httpdの行にTCP *:80と表示されていることを確認
 
@@ -175,7 +187,9 @@ httpdの行にTCP *:80と表示されていることを確認
 2. Tera TermでWebサーバーにログイン
 3. 以下のコマンドでDBサーバーにpingを実行
 
-```$ ping 10.0.2.10```
+```
+$ ping 10.0.2.10
+```
 
 4. WEB-SGに1.と同じセキュリティグループを設定
 5. ローカル環境からWebサーバーのパブリックIPにpingが実行できることを確認
@@ -186,11 +200,15 @@ httpdの行にTCP *:80と表示されていることを確認
 3. Webサーバーのホームディレクトリに秘密鍵ファイルがコピーされていることを確認
 4. 以下のコマンドで秘密鍵ファイルのパーミッションを変更
 
-```$ chmod 400 my-key.pem```
+```
+$ chmod 400 my-key.pem
+```
 
 5. 以下のコマンドでWebサーバーを踏み台にしてDBサーバーに接続
 
-```$ ssh -i my-key.pem ec2-user@10.0.2.10```
+```
+$ ssh -i my-key.pem ec2-user@10.0.2.10
+```
 
 6. Are you sure you want to continue connecting (yes/no)? が表示されたらyesを入力
 7. DBサーバーにログインできたら成功
@@ -220,7 +238,9 @@ httpdの行にTCP *:80と表示されていることを確認
 1. Webサーバー経由でDBサーバーにSSH接続
 2. 以下のコマンドでMySQLをインストール
 
-```$ sudo yum -y install mysql-server```
+```
+$ sudo yum -y install mysql-server
+```
 
 3. インストールに失敗する場合は以下のコマンドを順に実行
 
@@ -242,15 +262,21 @@ Confirm new password: 同じパスワードを入力
 
 5. 以下のコマンドでMySQLに接続
 
-```$ mysql -u root -p```
+```
+$ mysql -u root -p
+```
 
 6. 以下のコマンドでデータベースを作成
 
-```mysql> CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;```
+```
+mysql> CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+```
 
 7. wordpressユーザーを作成、パスワードはwordpresspasswdとする
 
-```mysql> grant all on wordpress.* to wordpress@"%" identified by 'wordpresspasswd';```
+```
+mysql> grant all on wordpress.* to wordpress@"%" identified by 'wordpresspasswd';
+```
 
 エラーが出るときは以下のコマンドを実行
 
@@ -292,11 +318,15 @@ sudo chown apache:apache /var/www/html -R
 # WordPressを設定
 1. 以下のコマンドでApacheの起動
 
-```sudo service httpd start```
+```
+sudo service httpd start
+```
 
 起動中の場合は再起動
 
-```sudo service httpd restart```
+```
+sudo service httpd restart
+```
 
 2. ブラウザでWebサーバーのパブリックIPまたはDNS名にアクセス
 3. WordPressの画面に従い初期設定、データベース情報は以下の通り入力
