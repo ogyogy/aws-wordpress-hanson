@@ -1,3 +1,7 @@
+---
+title: aws-wordpress-hanson
+---
+
 # VPCの作成
 1. VPC ダッシュボードに移動
 2. 以下の設定でVPCを作成
